@@ -20,13 +20,13 @@ import { ErrorFilter } from './error.filter';
     }),
   ],
   providers: [
-    ValidationService,
     PrismaService,
+    ValidationService,
     {
       provide: APP_FILTER,
       useClass: ErrorFilter,
     },
   ],
-  exports: [ValidationService, PrismaService],
+  exports: [PrismaService, ValidationService],
 })
 export class CommonModule {}
