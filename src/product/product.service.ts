@@ -9,7 +9,6 @@ import {
   UpdateProductDto,
 } from 'src/model/product.model';
 import { Product, ProductCategory } from 'generated/prisma';
-import { ErrorDetail400 } from 'src/common/error.filter';
 
 @Injectable()
 export class ProductService {
