@@ -38,13 +38,6 @@ export class ProductController {
     return result;
   }
 
-  @Get('/:id')
-  @HttpCode(200)
-  getById(@Param('id', new ParseIntPipe()) id: number) {
-    const result = this.productService.getById(id);
-    return result;
-  }
-
   @Post()
   @HttpCode(200)
   async create(@Body() createDTO: CreateProductDto) {

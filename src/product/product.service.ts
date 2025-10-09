@@ -20,6 +20,7 @@ export class ProductService {
   async get(request: GetProductRequest) {
     const data = await this.prismaService.product.findMany({
       where: { product_name: { contains: request.search } },
+      include: { category: true },
       skip: (request.page - 1) * request.limit,
       take: request.limit,
     });
@@ -28,25 +29,13 @@ export class ProductService {
     });
     return {
       code: 200,
-      data: data,
+      data: data.map((item) => this.toDetailProduct(item)),
       meta: {
         total_item: dataLength,
         page: request.page,
         limit: request.limit,
         total_page: Math.ceil(dataLength / request.limit),
       },
-    };
-  }
-
-  async getById(id: number) {
-    const data = await this.prismaService.product.findFirst({
-      where: { id },
-      include: { category: true },
-    });
-
-    return {
-      code: 200,
-      data: data && this.toDetailProduct(data as any),
     };
   }
 
