@@ -37,35 +37,6 @@ Response :
 }
 ```
 
-## Get Detail Products
-
-Endpoint : GET /api/products/:id
-
-Param :
-
-```json
-{
-  "id": 1,
-}
-```
-
-Response :
-
-```json
-{
-  "status": 200,
-  "data": {
-    "id": 1,
-    "product_name": "Komputer Spek Wahhh",
-    "category_id": 1,
-    "category_name": "Elektronik",
-    "group": "Komputer",
-    "stock": 5,
-    "price": 10000000,
-  }
-}
-```
-
 ## Get Categories lookup
 
 Endpoint : GET /api/lookup/product-categories
