@@ -59,7 +59,7 @@ Response :
   "data": [
     {
       "id": 1,
-      "label": "komputer",
+      "name": "komputer",
     }
     ....
   ],
