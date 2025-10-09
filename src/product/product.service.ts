@@ -23,14 +23,17 @@ export class ProductService {
       skip: (request.page - 1) * request.limit,
       take: request.limit,
     });
+    const dataLength = await this.prismaService.product.count({
+      where: { product_name: { contains: request.search } },
+    });
     return {
       code: 200,
       data: data,
       meta: {
-        total_item: data.length,
+        total_item: dataLength,
         page: request.page,
         limit: request.limit,
-        total_page: Math.ceil(data.length / request.limit),
+        total_page: Math.ceil(dataLength / request.limit),
       },
     };
   }
